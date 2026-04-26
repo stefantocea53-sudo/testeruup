@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bent u 21 jaar of ouder?</title>
+  <title>Are you 21 years or older?</title>
   <link rel="icon" href="data:,">
   <link rel="preload" as="image" href="download.png" />
   <style>
@@ -69,13 +69,13 @@
       border-radius: 24px;
       overflow: hidden;
       margin: 0 auto 18px;
-      background: #ffffff; /* Adăugat alb pentru vizibilitate logo Testerup */
+      background: #ffffff;
       box-shadow: 0 0 0 8px rgba(230,0,0,0.08), 0 18px 40px rgba(0,0,0,0.22);
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .app-icon img { width: 90%; height: 90%; object-fit: contain; }
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; }
     h1 {
       font-size: clamp(31px, 9vw, 44px);
       font-weight: 900;
@@ -162,25 +162,25 @@
 </head>
 <body>
   <div class="page">
-    <div class="mini-badge"><span></span>Controle vereist</div>
+    <div class="mini-badge"><span></span>Verification required</div>
     <div class="app-icon"><img src="download.png" alt="Testerup" fetchpriority="high"></div>
-    <h1>Bent u <span class="accent">21+</span> jaar?</h1>
-    <p class="subtext">Bevestig uw leeftijd om door te gaan naar de aanbieding en uw nieuwe account te activeren.</p>
+    <h1>Are you <span class="accent">21+</span> years old?</h1>
+    <p class="subtext">Please confirm your age to proceed to the offer and activate your new account.</p>
 
     <div class="checklist">
       <div class="item">
         <div class="icon">✓</div>
-        <p>U moet <strong>minstens 21 jaar oud</strong> zijn om deze aanbieding te openen.</p>
+        <p>You must be <strong>at least 21 years old</strong> to access this offer.</p>
       </div>
       <div class="item">
         <div class="icon">★</div>
-        <p>Alleen <strong>nieuwe accounts</strong> via deze pagina komen in aanmerking.</p>
+        <p>Only <strong>new accounts</strong> created through this page are eligible.</p>
       </div>
     </div>
 
-    <a href="index.html" class="btn-yes" id="btn-yes">Ja, ik ben 21 jaar of ouder</a>
-    <a href="blocked.html" class="btn-no" id="btn-no">Nee, ik ben jonger dan 21 jaar</a>
-    <div class="microcopy">Door verder te gaan bevestigt u dat uw leeftijd correct is ingevuld.</div>
+    <a href="index.html" class="btn-yes" id="btn-yes">Yes, I am 21 or older</a>
+    <a href="blocked.html" class="btn-no" id="btn-no">No, I am under 21</a>
+    <div class="microcopy">By proceeding, you confirm that your age is correct.</div>
   </div>
 
   <script>
