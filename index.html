@@ -36,6 +36,7 @@
       display: flex;
       justify-content: center;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     .page {
@@ -451,6 +452,56 @@
       margin: 0 10px;
     }
 
+    /* ==================================================================
+       STILURI PENTRU FAKE LIVE TOAST
+       ================================================================== */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      pointer-events: none;
+      width: 90%;
+      max-width: 380px;
+    }
+    
+    .toast {
+      background: rgba(20, 10, 10, 0.98);
+      border: 1px solid rgba(230, 0, 0, 0.4);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+    }
+    
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .toast-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: white;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
     @media (max-width: 420px) {
       .page {
         padding-left: 14px;
@@ -596,8 +647,16 @@
     </footer>
   </div>
 
+  <div class="toast-container">
+    <div class="toast" id="live-toast">
+      <div class="toast-icon">✓</div>
+      <span id="toast-msg">Lars heeft zojuist $10 verdiend</span>
+    </div>
+  </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      // Pasare parametri URL
       document.querySelectorAll("a").forEach(function (el) {
         var href = el.getAttribute("href");
         if (!href || href.includes("#")) return;
@@ -608,6 +667,41 @@
           el.setAttribute("href", href + window.location.search);
         }
       });
+
+      // SCRIPT PENTRU FAKE LIVE NOTIFICATIONS
+      const names = ['Lars', 'Daan', 'Jeroen', 'Sem', 'Milan', 'Luuk', 'Finn', 'Thijs', 'Jesse', 'Thomas', 'Sven', 'Bram', 'Niels', 'Tim', 'Tom'];
+      const actions = [
+        'heeft zojuist $10 verdiend', 
+        'is net begonnen met spelen', 
+        'heeft een $25 bonus gekregen', 
+        'heeft zojuist $5 verdiend', 
+        'heeft zijn account geactiveerd'
+      ];
+      
+      function showToast() {
+        const toast = document.getElementById('live-toast');
+        const msg = document.getElementById('toast-msg');
+        
+        const randomName = names[Math.floor(Math.random() * names.length)];
+        const randomInitial = String.fromCharCode(65 + Math.floor(Math.random() * 26)); // O literă random de la A la Z
+        const randomAction = actions[Math.floor(Math.random() * actions.length)];
+        
+        msg.innerText = `${randomName} ${randomInitial}. ${randomAction}`;
+        
+        toast.classList.add('show');
+        
+        // Ascunde notificarea după 4 secunde
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 4000);
+        
+        // Generează următoarea notificare într-un interval random între 4 și 10 secunde
+        const nextTime = Math.floor(Math.random() * (10000 - 4000 + 1) + 4000);
+        setTimeout(showToast, nextTime);
+      }
+      
+      // Pornește prima notificare după 3 secunde de la intrarea pe pagină
+      setTimeout(showToast, 3000);
     });
   </script>
 </body>
