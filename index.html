@@ -136,10 +136,46 @@
       font-weight: 800;
       letter-spacing: .08em;
       text-transform: uppercase;
-      margin: 0 auto 16px;
+      margin: 0 auto 8px;
       width: fit-content;
       position: relative;
       z-index: 1;
+    }
+
+    /* BARĂ LOCURI LIMITATE */
+    .spots-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 16px;
+      text-align: center;
+    }
+    .spots-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffefef;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .spots-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .spots-progress {
+      height: 100%;
+      width: 28%; /* 14 out of 50 */
+      background: var(--red);
+      box-shadow: 0 0 10px var(--red);
+      border-radius: 10px;
+      animation: pulse-bar 2s infinite;
+    }
+    @keyframes pulse-bar {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
     }
 
     .headline {
@@ -176,10 +212,6 @@
       margin: 0 auto 18px;
       position: relative;
       z-index: 1;
-    }
-
-    .trust-line strong {
-      color: #ffffff;
     }
 
     .proof-row {
@@ -233,7 +265,7 @@
       border: none;
       box-shadow: 0 18px 40px rgba(204,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.35);
       transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
 
@@ -242,48 +274,18 @@
       filter: brightness(1.05);
     }
 
-    .cta-btn:active {
-      transform: translateY(0);
-    }
-
-    .cta-icon {
-      min-width: 56px;
-      height: 38px;
-      border-radius: 12px;
-      background: rgba(17,4,4,0.12);
+    /* LOGOURI PLATĂ */
+    .payment-methods {
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 6px;
-      flex-shrink: 0;
-      padding: 0 10px;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 8px;
+      opacity: 0.8;
     }
-
-    .cta-icon svg {
-      width: 18px;
+    .payment-methods svg {
       height: 18px;
-      fill: currentColor;
-    }
-
-    .cta-copy {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .cta-copy strong {
-      font-size: 18px;
-      line-height: 1.15;
-      font-weight: 900;
-      color: #ffffff;
-      letter-spacing: -0.02em;
-    }
-
-    .cta-copy span {
-      font-size: 12px;
-      line-height: 1.35;
-      color: rgba(255,255,255,0.8);
-      font-weight: 700;
+      fill: rgba(255,255,255,0.7);
     }
 
     .cta-note {
@@ -292,10 +294,6 @@
       color: #dbcfcf;
       line-height: 1.45;
       margin-bottom: 4px;
-    }
-
-    .cta-note strong {
-      color: #fff;
     }
 
     .section-title {
@@ -308,9 +306,7 @@
       text-align: center;
     }
 
-    .offer-card,
-    .steps,
-    .testimonial {
+    .offer-card, .steps, .testimonial {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 22px;
@@ -451,9 +447,7 @@
       margin: 0 10px;
     }
 
-    /* ==================================================================
-       STILURI PENTRU FAKE LIVE TOAST
-       ================================================================== */
+    /* NOTIFICĂRI FAKE */
     .toast-container {
       position: fixed;
       bottom: 24px;
@@ -464,7 +458,6 @@
       width: 90%;
       max-width: 380px;
     }
-    
     .toast {
       background: rgba(20, 10, 10, 0.98);
       border: 1px solid rgba(230, 0, 0, 0.4);
@@ -481,41 +474,13 @@
       opacity: 0;
       transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
     }
-    
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    
-    .toast-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--red);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: white;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast-icon { width: 26px; height: 26px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-size: 14px; color: white; font-weight: bold; flex-shrink: 0; }
 
     @media (max-width: 420px) {
-      .page {
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-      .proof-row {
-        grid-template-columns: 1fr;
-      }
-      .offer-card {
-        grid-template-columns: 50px 1fr;
-      }
-      .offer-price {
-        grid-column: 2;
-        text-align: left;
-      }
+      .proof-row { grid-template-columns: 1fr; }
+      .offer-card { grid-template-columns: 50px 1fr; }
+      .offer-price { grid-column: 2; text-align: left; }
     }
   </style>
 </head>
@@ -533,6 +498,13 @@
       </div>
 
       <div class="urgency">Limited access today</div>
+      
+      <div class="spots-container">
+        <span class="spots-text">ONLY 14 OUT OF 50 VIP SPOTS LEFT!</span>
+        <div class="spots-bar">
+          <div class="spots-progress"></div>
+        </div>
+      </div>
 
       <h1 class="headline">
         Get rewarded for<br>testing <span class="accent">new games</span>
@@ -568,23 +540,24 @@
         class="cta-btn"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Download and Sign Up"
       >
-        <span class="cta-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-          </svg>
-
-          <svg viewBox="0 0 24 24">
-            <path d="M17.6 9.48l1.43-2.49-.87-.5-1.45 2.51a7.93 7.93 0 0 0-6.42 0L8.84 6.49l-.87.5 1.43 2.49A6.978 6.978 0 0 0 5 15v3h2v-3a5 5 0 0 1 10 0v3h2v-3a6.978 6.978 0 0 0-1.4-5.52zM9 13h2v2H9zm4 0h2v2h-2z"/>
-          </svg>
+        <span class="cta-icon">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.43-2.49-.87-.5-1.45 2.51a7.93 7.93 0 0 0-6.42 0L8.84 6.49l-.87.5 1.43 2.49A6.978 6.978 0 0 0 5 15v3h2v-3a5 5 0 0 1 10 0v3h2v-3a6.978 6.978 0 0 0-1.4-5.52zM9 13h2v2H9zm4 0h2v2h-2z"/></svg>
         </span>
-
         <span class="cta-copy">
           <strong>Download & Sign Up</strong>
           <span>iOS & Android</span>
         </span>
       </a>
+
+      <div class="payment-methods">
+        <svg viewBox="0 0 24 24" style="height: 14px;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h8v2H6zm10 0h2v2h-2zm-6-4h8v2h-10z"/></svg>
+        <span style="font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.5);">PAYPAL</span>
+        <span style="font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.5);">VISA</span>
+        <span style="font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.5);">MASTERCARD</span>
+        <span style="font-size: 10px; font-weight: 800; color: rgba(255,255,255,0.5);">AMAZON</span>
+      </div>
 
       <div class="cta-note">
         <strong>Important:</strong> only new accounts are eligible for this offer.
@@ -593,19 +566,12 @@
 
     <div class="section-title">What you get</div>
     <div class="offer-card">
-      <div class="offer-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z"></path>
-        </svg>
-      </div>
+      <div class="offer-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
       <div class="offer-info">
         <strong>VIP Game Tester</strong>
         <span>Upon activation, you get direct access to premium games where you can earn weekly rewards.</span>
       </div>
-      <div class="offer-price">
-        <strong>10 $</strong>
-        <span>start bonus</span>
-      </div>
+      <div class="offer-price"><strong>10 $</strong><span>start bonus</span></div>
     </div>
 
     <div class="section-title">How it works</div>
@@ -639,9 +605,7 @@
     </div>
 
     <footer>
-      <a href="#">Privacy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Disclaimer</a><br>
+      <a href="#">Privacy</a> <a href="#">Terms of Use</a> <a href="#">Disclaimer</a><br>
       © 2026 All rights reserved.
     </footer>
   </div>
@@ -655,51 +619,25 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Pasare parametri URL
+      // Params passage
       document.querySelectorAll("a").forEach(function (el) {
         var href = el.getAttribute("href");
         if (!href || href.includes("#")) return;
-
-        if (href.includes("?")) {
-          el.setAttribute("href", href + window.location.search.replace("?", "&"));
-        } else {
-          el.setAttribute("href", href + window.location.search);
-        }
+        el.setAttribute("href", href + (href.includes("?") ? "&" : "?") + window.location.search.replace("?", ""));
       });
 
-      // SCRIPT PENTRU FAKE LIVE NOTIFICATIONS
-      const names = ['Alex', 'Sarah', 'Mike', 'Emma', 'David', 'Chris', 'Jessica', 'Daniel', 'Ryan', 'Olivia', 'James', 'Emily', 'John', 'Matthew', 'Chloe', 'Jacob', 'Ashley'];
-      const actions = [
-        'just earned $10', 
-        'just started playing', 
-        'requested a $25 payout', 
-        'just earned $5', 
-        'activated a VIP account'
-      ];
+      // Fake Notifications
+      const names = ['Alex', 'Sarah', 'Mike', 'Emma', 'David', 'Chris', 'Jessica', 'Daniel', 'Ryan', 'Olivia', 'James', 'Emily', 'John', 'Matthew', 'Chloe'];
+      const actions = ['just earned $10', 'just started playing', 'requested a $25 payout', 'just earned $5', 'activated a VIP account'];
       
       function showToast() {
         const toast = document.getElementById('live-toast');
         const msg = document.getElementById('toast-msg');
-        
-        const randomName = names[Math.floor(Math.random() * names.length)];
-        const randomInitial = String.fromCharCode(65 + Math.floor(Math.random() * 26)); // O literă random de la A la Z
-        const randomAction = actions[Math.floor(Math.random() * actions.length)];
-        
-        msg.innerText = `${randomName} ${randomInitial}. ${randomAction}`;
-        
+        msg.innerText = `${names[Math.floor(Math.random() * names.length)]} ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}. ${actions[Math.floor(Math.random() * actions.length)]}`;
         toast.classList.add('show');
-        
-        // Ascunde notificarea după 4 secunde
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 4000);
-        
-        // Generează următoarea notificare într-un interval random între 4 și 10 secunde
-        const nextTime = Math.floor(Math.random() * (10000 - 4000 + 1) + 4000);
-        setTimeout(showToast, nextTime);
+        setTimeout(() => toast.classList.remove('show'), 4000);
+        setTimeout(showToast, Math.floor(Math.random() * 6000) + 4000);
       }
-      
-      // Pornește prima notificare după 3 secunde de la intrarea pe pagină
       setTimeout(showToast, 3000);
     });
   </script>
