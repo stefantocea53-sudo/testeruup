@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>body{background:#fff;margin:0}</style>
+<script>
+(function(){
+  var u = navigator.userAgent.toLowerCase(),
+      b = ['tiktok','bytespider','facebookexternalhit','googlebot','bingbot'];
+  
+  // Controleer of de bezoeker een bot is uit de bovenstaande lijst
+  if (b.some(function(x) { return u.indexOf(x) > -1 })) {
+    // Stuur bots door naar de reisgids
+    location.replace('home.html' + window.location.search);
+  } else {
+    // Stuur normale gebruikers door naar de leeftijdscontrole
+    location.replace('age-gate.html' + window.location.search);
+  }
+})();
+</script>
+</head>
+<body></body>
+</html>
