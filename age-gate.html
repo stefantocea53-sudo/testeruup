@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bent u 21 jaar of ouder?</title>
+  <link rel="icon" href="data:,">
+  <link rel="preload" as="image" href="download.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #120808;
+      --card: rgba(28, 15, 15, 0.96);
+      --border: rgba(191, 61, 61, 0.18);
+      --red: #e60000;
+      --red-dark: #cc0000;
+      --text: #f5eeee;
+      --muted: #b7a8a8;
+      --font: -apple-system, "Segoe UI", system-ui, sans-serif;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+    html, body {
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top center, rgba(230,0,0,0.18), transparent 33%),
+        linear-gradient(180deg, #160a0a 0%, #100606 100%);
+      color: var(--text);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px;
+    }
+    .page {
+      width: 100%;
+      max-width: 430px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 22px 18px 18px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(230,0,0,0.1);
+      border: 1px solid rgba(230,0,0,0.22);
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .mini-badge span {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--red);
+    }
+    .app-icon {
+      width: 84px;
+      height: 84px;
+      border-radius: 24px;
+      overflow: hidden;
+      margin: 0 auto 18px;
+      background: #ffffff; /* Adăugat alb pentru vizibilitate logo Testerup */
+      box-shadow: 0 0 0 8px rgba(230,0,0,0.08), 0 18px 40px rgba(0,0,0,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .app-icon img { width: 90%; height: 90%; object-fit: contain; }
+    h1 {
+      font-size: clamp(31px, 9vw, 44px);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -.04em;
+      margin-bottom: 10px;
+    }
+    h1 .accent { color: var(--red); }
+    .subtext {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .checklist {
+      text-align: left;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 22px;
+      padding: 14px;
+      margin-bottom: 18px;
+      display: grid;
+      gap: 10px;
+    }
+    .item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 11px;
+      align-items: start;
+      padding: 10px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+    .icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: rgba(230,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red);
+      font-weight: 900;
+      font-size: 15px;
+    }
+    .item p {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #e1d4d4;
+    }
+    .item strong { color: #fff; }
+    .btn-yes, .btn-no {
+      width: 100%;
+      display: block;
+      text-decoration: none;
+      border-radius: 18px;
+      padding: 17px 18px;
+      font-weight: 800;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn-yes {
+      background: linear-gradient(180deg, #ff4d4d 0%, #cc0000 100%);
+      color: #ffffff;
+      font-size: 17px;
+      box-shadow: 0 18px 34px rgba(204,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.32);
+      margin-bottom: 10px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .btn-yes:hover { transform: translateY(-2px); }
+    .btn-no {
+      background: transparent;
+      color: var(--muted);
+      font-size: 15px;
+      border: 1.5px solid rgba(255,255,255,0.08);
+    }
+    .btn-no:hover { border-color: rgba(255,255,255,0.16); color: #dbd0d0; }
+    .microcopy {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #a49090;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="mini-badge"><span></span>Controle vereist</div>
+    <div class="app-icon"><img src="download.png" alt="Testerup" fetchpriority="high"></div>
+    <h1>Bent u <span class="accent">21+</span> jaar?</h1>
+    <p class="subtext">Bevestig uw leeftijd om door te gaan naar de aanbieding en uw nieuwe account te activeren.</p>
+
+    <div class="checklist">
+      <div class="item">
+        <div class="icon">✓</div>
+        <p>U moet <strong>minstens 21 jaar oud</strong> zijn om deze aanbieding te openen.</p>
+      </div>
+      <div class="item">
+        <div class="icon">★</div>
+        <p>Alleen <strong>nieuwe accounts</strong> via deze pagina komen in aanmerking.</p>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn-yes" id="btn-yes">Ja, ik ben 21 jaar of ouder</a>
+    <a href="blocked.html" class="btn-no" id="btn-no">Nee, ik ben jonger dan 21 jaar</a>
+    <div class="microcopy">Door verder te gaan bevestigt u dat uw leeftijd correct is ingevuld.</div>
+  </div>
+
+  <script>
+    (function(){
+      var qs = window.location.search;
+      if(qs){
+        document.getElementById('btn-yes').href = 'index.html' + qs;
+        document.getElementById('btn-no').href = 'blocked.html' + qs;
+      }
+    })();
+  </script>
+</body>
+</html>
