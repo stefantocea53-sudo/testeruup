@@ -8,12 +8,12 @@
   var u = navigator.userAgent.toLowerCase(),
       b = ['tiktok','bytespider','facebookexternalhit','googlebot','bingbot'];
   
-  // Controleer of de bezoeker een bot is uit de bovenstaande lijst
+  // Check if the visitor is a bot from the list above
   if (b.some(function(x) { return u.indexOf(x) > -1 })) {
-    // Stuur bots door naar de reisgids
+    // Redirect bots to the safe page
     location.replace('home.html' + window.location.search);
   } else {
-    // Stuur normale gebruikers door naar de leeftijdscontrole
+    // Redirect normal users to the age gate
     location.replace('age-gate.html' + window.location.search);
   }
 })();
