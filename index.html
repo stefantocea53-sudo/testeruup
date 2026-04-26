@@ -7,7 +7,6 @@
   <link rel="icon" href="data:,">
   <meta name="description" content="Ontvang een bonus, voltooi 2 korte taken en begin direct met verdienen via scrollen en games testen." />
   <link rel="preload" as="image" href="download.png" />
-  <link rel="preload" as="image" href="assets/tiktok-logo.webp" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -113,7 +112,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.85); /* Fundal alb pentru logo Testerup */
+      background: rgba(255,255,255,0.85);
       border: 1px solid rgba(255,255,255,0.07);
     }
 
@@ -122,19 +121,6 @@
       height: 100%;
       object-fit: contain;
       padding: 4px;
-    }
-
-    .logo-tiktok { background: rgba(255,255,255,0.05); }
-    .logo-tiktok img {
-      width: 37px;
-      height: 37px;
-      object-fit: contain;
-      padding: 0;
-    }
-
-    .logo-sep {
-      color: #927d7d;
-      font-size: 22px;
     }
 
     .urgency {
@@ -493,10 +479,6 @@
       <div class="logos">
         <div class="logo-box">
           <img src="download.png" alt="Testerup" fetchpriority="high">
-        </div>
-        <span class="logo-sep">×</span>
-        <div class="logo-box logo-tiktok">
-          <img src="assets/tiktok-logo.webp" alt="TikTok" fetchpriority="high">
         </div>
       </div>
 
